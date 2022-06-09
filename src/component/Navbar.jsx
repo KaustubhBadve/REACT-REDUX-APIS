@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import style from '../pages/pages.module.css'
 const Navbar = () => {
   return (
     <div style={{display:"flex", gap:"50px",marginLeft:"50px"}}>
@@ -8,6 +8,6 @@ const Navbar = () => {
         <Link to='/todo'>TodoList</Link>
     </div>
   )
-}
+} 
 
 export default Navbar

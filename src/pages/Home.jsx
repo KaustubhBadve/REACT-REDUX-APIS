@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef } from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import { addtodo } from '../store/action'
-
+import style from './pages.module.css'
 
 
 const Home = () => {
