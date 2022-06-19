@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodo } from "../store/action";
+import { deleteTodo, editTodo } from "../store/Todo/action";
 import style from './pages.module.css'
 import { useRef } from "react";
 

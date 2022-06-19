@@ -1,13 +1,23 @@
 import React from 'react'
 import { useRef } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import { addtodo } from '../store/action'
+import { useNavigate } from 'react-router-dom'
+import { addtodo } from '../store/Todo/action'
 import style from './pages.module.css'
 
 
 const Home = () => {
     const ref=useRef()
     
+    const {isAuth}=useSelector((state)=>state.Login)
+    
+    const navigate=useNavigate()
+
+    if(isAuth==false)
+    {
+     navigate("/login")
+    }
+
 const dispatch=useDispatch()
 const todo=useSelector((state)=>state.todos)
 
