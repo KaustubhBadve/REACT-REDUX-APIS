@@ -14,15 +14,16 @@ const todo=useSelector((state)=>state.todos)
     const handleAdd=()=>{
         let value=ref.current.value
         dispatch(addtodo(value))
+        ref.current.value=""
         }
 
   return (
     <div>
-        <h1>TODO</h1>
+        <h1 style={{fontSize:"80px"}}>TODO</h1>
         <div>
-            <input type="text" ref={ref} placeholder='Add todos...'/>
+            <input style={{width:"500px",marginBottom:"50px"}} type="text" ref={ref} placeholder='Add todos...'/>
         </div>
-        <button onClick={handleAdd}>ADD</button>
+        <button style={{width:"120px",height:"60px",fontSize:"30px"}} onClick={handleAdd}>ADD</button>
         <br /><br /><br />
        
     </div>

@@ -4,20 +4,28 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteTodo, editTodo } from "../store/action";
 import style from './pages.module.css'
+import { useRef } from "react";
 
 const Todolist = () => {
- 
- const [flag, setflag] = useState("")
+ let value=useRef()
+//  const [flag, setflag] = useState("")
   const [list, setlist] = useState([]);
   const dispatch = useDispatch();
   
-const HandleOnChange=(e)=>{
-console.log(e.target.checked )
+const HandleOnChange=async(e,id)=>{
+  if(e.target.checked===false)
+  {
+    value.current=false
+  }
+  else{
+    value.current=true  
+  }
+  await axios.patch(`http://localhost:8080/Todos/${id}`,{flag:value.current})
 }
 
   useEffect(() => {
     async function pop() {
-      let r = await axios.get("http://localhost:3002/Todos");
+      let r = await axios.get("http://localhost:8080/Todos");
       setlist(r.data);
     }
     pop();
@@ -26,27 +34,25 @@ console.log(e.target.checked )
   const handleDelete = (id) => {
     dispatch(deleteTodo(id));
   };
-
-// console.log(flag)
-
   return (
     <div>
-      <h1>TODO LIST</h1>
+      <h1 style={{fontSize:"80px"}}>TODO LIST</h1>
 
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div  style={{ display: "flex", flexDirection: "column" }}>
 
         {list.map((todo) => {
           return (
-            <ul key={todo.id}>
+            <div >
+            <ul style={{}} className={todo.flag ? style.AA : style.BB} key={todo.id}>
 
-              <input style={{height:"19px"}} type="checkbox" onChange={HandleOnChange} />
+              <input style={{height:"19px"}} type="checkbox" onChange={(e)=>HandleOnChange(e,todo.id)} />
 
               <Link to={`/todo/${todo.id}`}>{todo.todoname}</Link>
 
               <button onClick={() => handleDelete(todo.id)}>Delete</button>
-              
                
             </ul>
+            </div>
           );
         })}
       </div>

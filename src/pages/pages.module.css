@@ -20,3 +20,29 @@ a{
     text-decoration: none;
      font-size: 25px;
 }
+.AA{
+text-decoration: line-through;
+color:yellow;
+width:500px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+align-items: center;
+}
+body{
+    background-color: brown;
+    color: chartreuse;
+}
+.BB{
+    color:yellow;
+    width:500px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+    align-items: center;
+}
+.BB>a{
+    color: rgb(180, 255, 5);
+}
